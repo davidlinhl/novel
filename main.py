@@ -44,8 +44,8 @@ class Novel(tornado.web.RequestHandler):
         content = f.read()
 
         # 2.2 获取开始位置
-        place = int(self.get_argument("place", None))
-        if not place:
+        place = int(self.get_argument("place", 0))
+        if place == 0:
             place = bookmarks[title]
         print(place)
         part = content[place : place + options.bulk_size]
