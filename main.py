@@ -1,3 +1,4 @@
+# coding=utf-8
 import tornado.httpserver, tornado.ioloop, tornado.options, tornado.web, os.path, random, string
 from tornado.options import define, options
 import pickle
