@@ -1,0 +1,45 @@
+<html>
+<title>小说</title>
+<!-- <meta name="keywords" content="第一千三百七十九章 平息"> -->
+<!-- <meta name="description" content="文书楼提供了天蚕土豆创作的小说《元尊》干净清爽无错字的文字章节：第一千三百七十九章 平息在线阅读。"> -->
+<!-- <link rel="shortcut icon" href="https://lib.vskyman.top/favicon.ico"> -->
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div>
+  {%for part in parts%}
+      {{part[0]}}
+      <button type="submit" class="btn btn-primary" onclick="save_bookmark({{part[1]}})">
+        保存书签
+      </button>
+  {%end%}
+</div>
+
+  <script type="text/javascript">
+    function save_bookmark(place) {
+      console.log("click")
+      $.ajax({
+        url:"/novel",
+        type: "POST",
+        data: {
+          action: "bookmark",
+          title: "{{title}}",
+          place: place,
+        },
+        dataType: "json",
+        success: function(res) {
+          console.log("clicked : ", place)
+          console.log("success", res)
+        },
+        fail: function(res) {
+          console.log("fail",res)
+        }
+      })
+    }
+  </script>
+</body>
+</html>
