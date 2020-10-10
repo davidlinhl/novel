@@ -11,6 +11,7 @@ define("bookmark_size", default=1024, help="书签没多少个字一个", type=i
 class IndexHandler(tornado.web.RequestHandler):
     def get(self):
         novels = os.listdir(os.path.join(os.path.dirname(__file__), "upload"))
+        print(novels)
         self.render("index.html", novels=novels)
 
 
@@ -52,6 +53,7 @@ class Novel(tornado.web.RequestHandler):
         parts = []
         for idx in range(0, options.bulk_size, options.bookmark_size):
             parts.append([part[idx : idx + options.bookmark_size], place + idx + options.bookmark_size])
+        parts.replace("\n", "<br>")
         self.render("novel.html", parts=parts, title=title)
 
     def post(self):
