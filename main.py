@@ -74,6 +74,16 @@ class Novel(tornado.web.RequestHandler):
 
 class Application(tornado.web.Application):
     def __init__(self):
+        # 测试是否有对 当前路径 和 upload路径 的读写权限
+        bookmark_fname = os.path.join(os.path.dirname(__file__), "bookmarks.pkl")
+        with open(bookmark_fname, "rb") as f:
+            records = pickle.load(f)
+        print(len(records))
+        with open(bookmark_fname, "wb") as f:
+            records = pickle.dump(records, f)
+        with open("./upload/test.txt", "w") as f:
+            print("test", file=f)
+
         handlers = [(r"/", IndexHandler), (r"/upload", UploadHandler), (r"/novel", Novel)]
         tornado.web.Application.__init__(
             self,
