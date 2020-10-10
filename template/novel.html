@@ -7,14 +7,17 @@
 <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
 <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 </head>
 
 <body>
 <div>
   {%for part in parts%}
-      {{part[0]}}
+      {% raw part[0] %}
+      {{part[0][0]}}
       <button type="submit" class="btn btn-primary" onclick="save_bookmark({{part[1]}})">
-        保存书签
+        <i class="fa fa-save"></i>
       </button>
   {%end%}
 </div>

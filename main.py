@@ -53,7 +53,10 @@ class Novel(tornado.web.RequestHandler):
         parts = []
         for idx in range(0, options.bulk_size, options.bookmark_size):
             parts.append([part[idx : idx + options.bookmark_size], place + idx + options.bookmark_size])
-        parts.replace("\n", "<br>")
+        print(parts[0])
+        for idx in range(len(parts)):
+            parts[idx][0] = parts[idx][0].replace("\n", " <br> ")
+        print(parts[0])
         self.render("novel.html", parts=parts, title=title)
 
     def post(self):
