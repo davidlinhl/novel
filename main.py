@@ -54,6 +54,8 @@ class Novel(tornado.web.RequestHandler):
         for idx in range(0, options.bulk_size, options.bookmark_size):
             parts.append([part[idx : idx + options.bookmark_size], place + idx + options.bookmark_size])
         print(parts[0])
+        for p in parts:
+            print(p, "\n\n\n\n\n\n")
         for idx in range(len(parts)):
             parts[idx][0] = parts[idx][0].replace("\n", " <br> ")
         print(parts[0])
