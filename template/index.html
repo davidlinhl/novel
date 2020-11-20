@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bootstrap 实例</title>
+  <title>小说</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
@@ -15,7 +15,8 @@
       <h1>听小说</h1>
     </div>
 
-    <a href="/upload"><button  type="button" name="button">上传</button></a>
+    <button type="button" class="btn btn-primary" onclick = "window.location.href = ./upload">上传</button>
+    <br><br><br>
 
     <ul class="list-group">
       {% for name in novels %}
